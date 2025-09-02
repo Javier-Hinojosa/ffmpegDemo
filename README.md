@@ -1,6 +1,5 @@
 # untitled
 
-proyecto de domostracion de uso para la dependencia ffmpeg
 
 ## Getting Started
 
