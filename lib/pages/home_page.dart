@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ffmpeg/utils/permissions.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:just_audio/just_audio.dart';
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _audioPlayer = AudioPlayer();
-    _initDownloads();
+      _initDownloads();
   }
 
   Future<void> _initDownloads() async {
@@ -46,6 +47,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _pickFile() async {
+
+   await  requestPermissions();
+
     final result = await FilePicker.platform.pickFiles(type: FileType.any, withReadStream: true, withData: true);
     if (result == null || result.files.isEmpty) return;
     final file = result.files.single;
